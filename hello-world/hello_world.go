@@ -1,7 +1,7 @@
 // Package greeting implements a simple message output.
 package greeting
 
-// HelloWorld print a message.
+// HelloWorld prints a message.
 func HelloWorld() string {
 	return "Hello, World!"
 }
