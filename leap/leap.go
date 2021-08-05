@@ -3,10 +3,8 @@ package leap
 
 // IsLeapYear checks if it's a leap year.
 func IsLeapYear(year int) bool {
-	if year != year/4*4 {
-		return false
-	} else if year == year/100*100 && year != year/400*400 {
-		return false
+	if year%100 == 0 {
+		return year%400 == 0
 	}
-	return true
+	return year%4 == 0
 }
