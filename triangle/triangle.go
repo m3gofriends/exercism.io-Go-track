@@ -15,18 +15,17 @@ const (
 )
 
 // KindFromSides return the type of the triangle.
-func KindFromSides(a, b, c float64) Kind {
-	var k Kind
+func KindFromSides(a, b, c float64) (kind Kind) {
 	if (a <= 0 || b <= 0 || c <= 0) || math.IsInf(a+b+c, 0) {
-		k = NaT
+		kind = NaT
 	} else if a+b >= c && a+c >= b && b+c >= a {
 		if a == b && b == c {
-			k = Equ
+			kind = Equ
 		} else if a == b || a == c || b == c {
-			k = Iso
+			kind = Iso
 		} else {
-			k = Sca
+			kind = Sca
 		}
 	}
-	return k
+	return kind
 }
