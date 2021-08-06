@@ -14,7 +14,7 @@ const (
 	Sca
 )
 
-// KindFromSides return the type of the triangle.
+// KindFromSides returns the type of the triangle.
 func KindFromSides(a, b, c float64) (kind Kind) {
 	if (a <= 0 || b <= 0 || c <= 0) || math.IsInf(a+b+c, 0) {
 		kind = NaT
