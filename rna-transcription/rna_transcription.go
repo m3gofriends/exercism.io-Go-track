@@ -5,14 +5,14 @@ package strand
 func ToRNA(dna string) string {
 	byteDna := []byte(dna)
 	for i := 0; i < len(byteDna); i++ {
-		switch string(byteDna[i]) {
-		case "G":
+		switch byteDna[i] {
+		case 'G':
 			byteDna[i] = 'C'
-		case "C":
+		case 'C':
 			byteDna[i] = 'G'
-		case "T":
+		case 'T':
 			byteDna[i] = 'A'
-		case "A":
+		case 'A':
 			byteDna[i] = 'U'
 		}
 	}
