@@ -22,14 +22,21 @@ func Hey(remark string) string {
 	if len(trimRemark) == 0 {
 		return "Fine. Be that way!"
 	}
-	if alphabetCount == upperCount && trimRemark[len(trimRemark)-1] == '?' {
-		return "Calm down, I know what I'm doing!"
-	}
-	if alphabetCount == upperCount {
+
+	switch alphabetCount {
+	case 0:
+		if trimRemark[len(trimRemark)-1] == '?' {
+			return "Sure."
+		}
+	case upperCount:
+		if trimRemark[len(trimRemark)-1] == '?' {
+			return "Calm down, I know what I'm doing!"
+		}
 		return "Whoa, chill out!"
-	}
-	if trimRemark[len(trimRemark)-1] == '?' {
-		return "Sure."
+	default:
+		if trimRemark[len(trimRemark)-1] == '?' {
+			return "Sure."
+		}
 	}
 	return "Whatever."
 }
