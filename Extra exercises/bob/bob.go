@@ -1,42 +1,28 @@
 // Package bob classifies the message.
 package bob
 
-import "strings"
+import (
+	"regexp"
+	"strings"
+)
 
 // Hey classifies the message.
 func Hey(remark string) string {
+	remark = strings.TrimSpace(remark)
+	upperCase, _ := regexp.MatchString(`^[^a-z]*[A-Z]+[^a-z]*$`, remark)
+	questionMark, _ := regexp.MatchString(`\?$`, remark)
 
-	alphabetCount, lowerCount, upperCount, trimRemark := 0, 0, 0, strings.TrimSpace(remark)
-
-	for _, letter := range trimRemark {
-		if (letter >= 'a' && letter <= 'z') || (letter >= 'A' && letter <= 'Z') {
-			alphabetCount++
-			if letter >= 'a' && letter <= 'z' {
-				lowerCount++
-			} else {
-				upperCount++
-			}
-		}
-	}
-
-	if len(trimRemark) == 0 {
+	if len(remark) == 0 {
 		return "Fine. Be that way!"
 	}
-
-	switch alphabetCount {
-	case 0:
-		if trimRemark[len(trimRemark)-1] == '?' {
-			return "Sure."
-		}
-	case upperCount:
-		if trimRemark[len(trimRemark)-1] == '?' {
-			return "Calm down, I know what I'm doing!"
-		}
+	if upperCase && questionMark {
+		return "Calm down, I know what I'm doing!"
+	}
+	if upperCase {
 		return "Whoa, chill out!"
-	default:
-		if trimRemark[len(trimRemark)-1] == '?' {
-			return "Sure."
-		}
+	}
+	if questionMark {
+		return "Sure."
 	}
 	return "Whatever."
 }
