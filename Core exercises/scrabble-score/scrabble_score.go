@@ -5,7 +5,7 @@ import "strings"
 
 // Score converts string to score.
 func Score(s string) (score int) {
-	for _, value := range strings.ToUpper(string(s)) {
+	for _, value := range strings.ToUpper(s) {
 		switch value {
 		case 'A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T':
 			score++
