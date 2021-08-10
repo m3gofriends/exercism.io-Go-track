@@ -5,21 +5,22 @@ import "strings"
 
 // Score converts string to score.
 func Score(s string) (score int) {
+	s = strings.ToUpper(string(s))
 	for _, value := range s {
-		switch strings.ToUpper(string(value)) {
-		case "A", "E", "I", "O", "U", "L", "N", "R", "S", "T":
+		switch value {
+		case 'A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T':
 			score++
-		case "D", "G":
+		case 'D', 'G':
 			score += 2
-		case "B", "C", "M", "P":
+		case 'B', 'C', 'M', 'P':
 			score += 3
-		case "F", "H", "V", "W", "Y":
+		case 'F', 'H', 'V', 'W', 'Y':
 			score += 4
-		case "K":
+		case 'K':
 			score += 5
-		case "J", "X":
+		case 'J', 'X':
 			score += 8
-		case "Q", "Z":
+		case 'Q', 'Z':
 			score += 10
 		}
 	}
