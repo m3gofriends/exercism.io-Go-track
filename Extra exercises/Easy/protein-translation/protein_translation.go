@@ -5,8 +5,8 @@ import "errors"
 
 // Error codes
 var (
-	ErrStop        = errors.New("Stop")
-	ErrInvalidBase = errors.New("InvalidBase")
+	ErrStop        = errors.New("stop")
+	ErrInvalidBase = errors.New("invalid base")
 )
 
 // FromCodon translates the codon sequence into a polypeptide.
