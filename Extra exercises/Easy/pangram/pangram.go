@@ -3,12 +3,10 @@ package pangram
 
 import "unicode"
 
-var letter = make(map[rune]bool)
-
 // IsPangram determines if a sentence is a pangram.
 func IsPangram(s string) bool {
 
-	letter = make(map[rune]bool)
+	letter := make(map[rune]bool)
 
 	for _, value := range s {
 		value = unicode.ToLower(value)
