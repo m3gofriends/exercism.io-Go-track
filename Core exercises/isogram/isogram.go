@@ -13,7 +13,6 @@ func IsIsogram(s string) bool {
 		if !unicode.IsLetter(value) {
 			continue
 		}
-
 		value = unicode.ToLower(value)
 		if _, ok := letter[value]; ok {
 			return false
