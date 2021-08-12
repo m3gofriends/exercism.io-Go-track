@@ -3,21 +3,13 @@ package isogram
 
 import "strings"
 
-var letter = make(map[rune]bool)
-
 // IsIsogram checks if string has duplicate letters.
 func IsIsogram(s string) bool {
-
-	letter = make(map[rune]bool)
-
-	for _, value := range strings.ToUpper(s) {
-		if value == '-' || value == ' ' {
-			continue
-		}
-		if letter[value] {
+	s = strings.ToLower(s)
+	for _, value := range s {
+		if (value >= 'a' && value <= 'z') && (strings.Count(s, string(value)) > 1) {
 			return false
 		}
-		letter[value] = true
 	}
 	return true
 }
