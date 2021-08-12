@@ -14,7 +14,7 @@ func IsIsogram(s string) bool {
 			continue
 		}
 		value = unicode.ToLower(value)
-		if _, ok := letter[value]; ok {
+		if letter[value] {
 			return false
 		}
 		letter[value] = true
