@@ -1,19 +1,19 @@
 // Package pangram determines if a sentence is a pangram.
 package pangram
 
-import "unicode"
-
 // IsPangram determines if a sentence is a pangram.
 func IsPangram(s string) bool {
+	var letterFlags uint32 = 0
 
-	letter := make(map[rune]bool)
-
-	for _, value := range s {
-		value = unicode.ToLower(value)
-		if !unicode.IsLetter(value) && !letter[value] {
-			continue
+	for i := 0; i < len(s); i++ {
+		letter := s[i]
+		if letter > 64 && letter < 91 {
+			letter += 32
 		}
-		letter[value] = true
+
+		if letter > 96 && letter < 123 {
+			letterFlags |= (1 << (letter - 'a'))
+		}
 	}
-	return len(letter) == 26
+	return letterFlags == 67108863 // 67108863 equals 111111111111111111111111 in base-2
 }
