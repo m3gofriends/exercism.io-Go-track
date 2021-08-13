@@ -9,7 +9,6 @@ func TestSumMultiples(t *testing.T) {
 			t.Fatalf("Sum of multiples of %v to %d returned %d, want %d.",
 				test.divisors, test.limit, s, test.sum)
 		}
-		t.Logf("PASS: %v %d %d %d", test.divisors, test.limit, s, test.sum)
 	}
 }
 
