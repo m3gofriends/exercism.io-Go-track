@@ -14,20 +14,18 @@ func RunLengthEncode(s string) (output string) {
 		if nowLetter == s[i] {
 			counter++
 		} else {
-			if counter == 1 {
-				output += string(nowLetter)
-			} else {
-				output += strconv.Itoa(counter) + string(nowLetter)
+			if counter > 1 {
+				output += strconv.Itoa(counter)
 			}
+			output += string(nowLetter)
 			nowLetter = s[i]
 			counter = 1
 		}
 	}
-	if counter == 1 {
-		output += string(nowLetter)
-	} else {
-		output += strconv.Itoa(counter) + string(nowLetter)
+	if counter > 1 {
+		output += strconv.Itoa(counter)
 	}
+	output += string(nowLetter)
 	return output
 }
 
