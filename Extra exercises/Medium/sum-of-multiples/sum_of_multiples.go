@@ -21,15 +21,14 @@ func SumMultiples(limit int, divisors ...int) (sum int) {
 	}
 
 	if len(d) == 0 {
-		return sum
+		return 0
 	}
 
 	for {
 		minValue, minIndex := d[0].accumulator, 0
 		for i := 1; i < len(d); i++ {
 			if minValue > d[i].accumulator {
-				minValue = d[i].accumulator
-				minIndex = i
+				minValue, minIndex = d[i].accumulator, i
 			} else if minValue == d[i].accumulator {
 				d[i].accumulate()
 			}
