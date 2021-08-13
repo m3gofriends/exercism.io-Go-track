@@ -11,7 +11,6 @@ func Detect(subject string, candidates []string) (output []string) {
 		if compare(subject, candidate) {
 			output = append(output, candidate)
 		}
-
 	}
 	return output
 }
