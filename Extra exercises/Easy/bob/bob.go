@@ -12,17 +12,16 @@ func Hey(remark string) string {
 	upperCase, _ := regexp.MatchString(`^[^a-z]*[A-Z]+[^a-z]*$`, remark)
 	questionMark, _ := regexp.MatchString(`\?$`, remark)
 
-	if len(remark) == 0 {
+	switch {
+	case len(remark) == 0:
 		return "Fine. Be that way!"
-	}
-	if upperCase && questionMark {
+	case upperCase && questionMark:
 		return "Calm down, I know what I'm doing!"
-	}
-	if upperCase {
+	case upperCase:
 		return "Whoa, chill out!"
-	}
-	if questionMark {
+	case questionMark:
 		return "Sure."
+	default:
+		return "Whatever."
 	}
-	return "Whatever."
 }
