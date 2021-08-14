@@ -1,9 +1,9 @@
-// Package anagram checks the rearrangement of letters to form a new word.
+// Package anagram checks the rearrangement of indexs to form a new word.
 package anagram
 
 import "strings"
 
-// Detect checks the rearrangement of letters to form a new word.
+// Detect checks the rearrangement of indexs to form a new word.
 func Detect(subject string, candidates []string) (output []string) {
 	subject = strings.ToLower(subject)
 
@@ -21,11 +21,11 @@ func compare(s, c string) bool {
 		return false
 	}
 	for i := 0; i < len(c); i++ {
-		letter := strings.IndexByte(s, c[i])
-		if letter == -1 {
+		index := strings.IndexByte(s, c[i])
+		if index == -1 {
 			return false
 		}
-		s = s[:letter] + s[letter+1:]
+		s = s[:index] + s[index+1:]
 	}
 	return true
 }
