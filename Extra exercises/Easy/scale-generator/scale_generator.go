@@ -62,9 +62,9 @@ func capitalize(s string) string {
 	return s
 }
 
-func searchIndex(s string, slice [12]string) (index int) {
+func searchIndex(s string, array [12]string) (index int) {
 	for {
-		if s == slice[index] {
+		if s == array[index] {
 			return index
 		}
 		index++
