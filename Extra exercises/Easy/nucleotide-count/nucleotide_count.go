@@ -14,12 +14,12 @@ type DNA string
 
 // Counts generates a histogram of valid nucleotides in the given DNA.
 func (d DNA) Counts() (histogram Histogram, err error) {
-	histogram = make(map[byte]int)
+	histogram = make(Histogram)
 	histogram['A'] = strings.Count(string(d), "A")
 	histogram['C'] = strings.Count(string(d), "C")
 	histogram['G'] = strings.Count(string(d), "G")
 	histogram['T'] = strings.Count(string(d), "T")
-	if histogram['A'] + histogram['C'] + histogram['G'] + histogram['T'] == len(d) {
+	if histogram['A']+histogram['C']+histogram['G']+histogram['T'] == len(d) {
 		return histogram, err
 	}
 	return histogram, errors.New("strand with invalid nucleotides")
