@@ -9,13 +9,13 @@ import (
 // Frequency is a map.
 type Frequency map[string]int
 
-var regex = regexp.MustCompile(`[a-z0-9]+'?[a-z0-9]?\b`)
+var regex = regexp.MustCompile(`[a-z0-9]+'?[a-z]?\b`)
 
 // WordCount calculates the number of occurrences of each word in the phrase.
 func WordCount(s string) Frequency {
-	frequency := make(map[string]int)
+	frequency := make(Frequency)
 
-	s = strings.ReplaceAll(strings.ToLower(s), "\n", " ")
+	s = strings.ToLower(strings.ReplaceAll(s, "\n", " "))
 	for _, value := range regex.FindAllString(s, -1) {
 		frequency[value]++
 	}
