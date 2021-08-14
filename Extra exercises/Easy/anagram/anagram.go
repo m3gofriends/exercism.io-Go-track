@@ -20,12 +20,12 @@ func compare(s, c string) bool {
 	if s == c || len(s) != len(c) {
 		return false
 	}
-	for _, letter := range c {
-		i := strings.IndexRune(s, letter)
-		if i == -1 {
+	for i := 0; i < len(c); i++ {
+		letter := strings.IndexByte(s, c[i])
+		if letter == -1 {
 			return false
 		}
-		s = s[:i] + s[i+1:]
+		s = s[:letter] + s[letter+1:]
 	}
 	return true
 }
