@@ -9,10 +9,9 @@ func CollatzConjecture(n int) (counter int, err error) {
 		return counter, errors.New("out of range")
 	}
 	for ; n != 1; counter++ {
-		switch n % 2 {
-		case 0:
+		if n%2 == 0 {
 			n /= 2
-		default:
+		} else {
 			n = 3*n + 1
 		}
 	}
