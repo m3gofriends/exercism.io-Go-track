@@ -2,13 +2,13 @@
 package strain
 
 type (
-	// Ints is a collection of integers.
+	// Ints is a collection of integers
 	Ints []int
 
-	// Lists is a collection of Ints.
+	// Lists is a collection of Ints
 	Lists [][]int
 
-	// Strings is a collection of strings.
+	// Strings is a collection of strings
 	Strings []string
 )
 
