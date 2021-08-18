@@ -16,7 +16,7 @@ func Encode(s string) string {
 
 	s = strings.ToLower(s)
 	for i := len(s) - 1; i > -1; i-- {
-		if (s[i] < 97 || s[i] > 122) && (s[i] < 48 || s[i] > 57) { // Not equal to a-z and 0-9.
+		if (s[i] < 'a' || s[i] > 'z') && (s[i] < '0' || s[i] > '9') {
 			s = s[:i] + s[i+1:]
 		}
 	}
@@ -44,10 +44,10 @@ func normalize(s string, c, r int) (output []byte) {
 			if index < len(s) {
 				output = append(output, s[index])
 			} else {
-				output = append(output, 32)
+				output = append(output, ' ')
 			}
 		}
-		output = append(output, 32)
+		output = append(output, ' ')
 	}
 	return output[:len(output)-1]
 }
