@@ -8,7 +8,7 @@ func IsValidISBN(s string) bool {
 	for i := 0; i < len(s); i++ {
 		switch s[i] {
 		case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9':
-			sum += int(s[i]-48) * (10 - counter)
+			sum += int(s[i]-'0') * (10 - counter)
 			counter++
 		case 'X':
 			if i != len(s)-1 {
