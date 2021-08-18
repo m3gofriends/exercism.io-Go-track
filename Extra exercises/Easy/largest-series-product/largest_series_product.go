@@ -14,10 +14,10 @@ func LargestSeriesProduct(s string, span int) (int64, error) {
 	var nowValue, product int64 = 1, 0
 	for i, times := 0, len(s)-span+1; i < times; i, nowValue = i+1, 1 {
 		for j := 0; j < span; j++ {
-			if s[i+j] < 48 || s[i+j] > 57 { // Not equal to 0-9.
+			if s[i+j] < '0' || s[i+j] > '9' {
 				return -1, errors.New("digits input must only contain digits")
 			}
-			nowValue *= int64(s[i+j] - 48)
+			nowValue *= int64(s[i+j] - '0')
 		}
 		if nowValue > product {
 			product = nowValue
