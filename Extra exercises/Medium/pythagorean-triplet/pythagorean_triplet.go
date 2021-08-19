@@ -33,9 +33,9 @@ func Sum(p int) (output []Triplet) {
 func generatePythagorean(n int) (pythagoreanList []Triplet) {
 	pythagoreanMap := make(map[Triplet]bool)
 
-	for i, j := 1, 2; j*j+i*i < n; j++ {
-		for k := 1; k*(j*j+i*i) < n; k++ {
-			value := Triplet{k * (j*j - i*i), k * (2 * j), k * (j*j + i*i)}.sort() // k*(j^2-i^2), k*(2*i*j), k*(j^2+i^2)
+	for i := 2; i*i+1 < n; i++ {
+		for k := 1; k*(i*i+1) < n; k++ {
+			value := Triplet{k * (i*i - 1), k * (2 * i), k * (i*i + 1)}.sort() // k*(i^2-j^2), k*(2*i*j), k*(i^2+j^2)
 			if _, ok := pythagoreanMap[value]; !ok {
 				pythagoreanMap[value] = true
 				pythagoreanList = append(pythagoreanList, value)
