@@ -35,7 +35,7 @@ func generatePythagorean(n int) (pythagoreanList []Triplet) {
 
 	for i := 2; i*i+1 < n; i++ {
 		for k := 1; k*(i*i+1) < n; k++ {
-			value := Triplet{k * (i*i - 1), k * (2 * i), k * (i*i + 1)}.sort() // k*(i^2-j^2), k*(2*i*j), k*(i^2+j^2)
+			value := Triplet{k * (i*i - 1), k * (2 * i), k * (i*i + 1)}.sort() // k*(i*i - j*j), k*(2*i*j), k*(i*i + j*j)
 			if _, ok := pythagoreanMap[value]; !ok {
 				pythagoreanMap[value] = true
 				pythagoreanList = append(pythagoreanList, value)
