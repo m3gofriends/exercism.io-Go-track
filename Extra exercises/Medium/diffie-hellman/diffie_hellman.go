@@ -8,12 +8,12 @@ import (
 
 // PrivateKey generates a new random private key.
 func PrivateKey(p *big.Int) *big.Int {
-	a, _ := rand.Int(rand.Reader, big.NewInt(0).Sub(p, big.NewInt(2)))
-	return big.NewInt(0).Add(a, big.NewInt(2))
+	private, _ := rand.Int(rand.Reader, big.NewInt(0).Sub(p, big.NewInt(2)))
+	return big.NewInt(0).Add(private, big.NewInt(2))
 }
 
 // PublicKey generates a new public key.
-func PublicKey(private, p *big.Int, g int64) (A *big.Int) {
+func PublicKey(private, p *big.Int, g int64) *big.Int {
 	return big.NewInt(0).Exp(big.NewInt(g), private, p)
 }
 
@@ -25,6 +25,6 @@ func NewPair(p *big.Int, g int64) (private, public *big.Int) {
 }
 
 // SecretKey calculates secret key from own private and strange public key.
-func SecretKey(private1, public2, p *big.Int) (s *big.Int) {
+func SecretKey(private1, public2, p *big.Int) *big.Int {
 	return big.NewInt(0).Exp(public2, private1, p)
 }
