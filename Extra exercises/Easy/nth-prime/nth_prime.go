@@ -12,19 +12,14 @@ func Nth(nth int) (int, bool) {
 }
 
 func generatePrimes(n int) []int {
-	numberMap, primeList := make(map[int]bool), make([]int, 0)
+	primeMap, primeList := make(map[int]bool), []int{2}
 
-	for i := 2; i*i < n; i++ {
-		if !numberMap[i] {
-			for j := i * i; j < n; j = j + i {
-				numberMap[j] = true
-			}
-		}
-	}
-
-	for i := 2; i < n; i++ {
-		if !numberMap[i] {
+	for i := 3; i < n; i += 2 {
+		if !primeMap[i] {
 			primeList = append(primeList, i)
+			for j := i * i; j < n; j += i {
+				primeMap[j] = true
+			}
 		}
 	}
 
