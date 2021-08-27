@@ -10,9 +10,9 @@ import (
 // EncodeVarint implements variable length quantity encoding.
 func EncodeVarint(list []uint32) (output []byte) {
 	for i := len(list) - 1; i >= 0; i-- {
-		s, index := hexToBin(list[i]), 0
+		s, index := decToBin(list[i]), 0
 		for ; len(s) > 7; index++ {
-			output, s = append(output, binToHex(s[len(s)-7:], index)), s[:len(s)-7]
+			output, s = append(output, binToDec(s[len(s)-7:], index)), s[:len(s)-7]
 		}
 
 		switch value, _ := strconv.ParseInt(s, 2, 32); {
@@ -30,8 +30,7 @@ func EncodeVarint(list []uint32) (output []byte) {
 func DecodeVarint(list []byte) (output []uint32, err error) {
 	s, outputString := "", ""
 	for i := 0; i < len(list); i++ {
-		s = hexToBin(uint32(list[i]))
-		if len(s) != 8 {
+		if s = decToBin(uint32(list[i])); len(s) != 8 {
 			for i := len(s); i < 7; i++ {
 				s = "0" + s
 			}
@@ -50,7 +49,7 @@ func DecodeVarint(list []byte) (output []uint32, err error) {
 	return output, err
 }
 
-func hexToBin(n uint32) (output string) {
+func decToBin(n uint32) (output string) {
 	if n == 0 {
 		return "0"
 	}
@@ -62,7 +61,7 @@ func hexToBin(n uint32) (output string) {
 	return output
 }
 
-func binToHex(s string, index int) byte {
+func binToDec(s string, index int) byte {
 	value, _ := strconv.ParseInt(s, 2, 32)
 
 	if index == 0 {
